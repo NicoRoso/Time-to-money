@@ -3,17 +3,7 @@ guid: 4a7a64eec1f27e74eb629304195d9591
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects:
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: PC
-    second: {fileID: 2100000, guid: c2c059c4c0cdf964283bfcdb78600866, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Wheel
-    second: {fileID: 2100000, guid: aa93a18734d239f4faa65adeeefd1847, type: 2}
+  externalObjects: {}
   materials:
     materialImportMode: 2
     materialName: 0
