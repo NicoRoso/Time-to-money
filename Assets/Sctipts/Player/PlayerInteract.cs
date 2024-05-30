@@ -41,7 +41,18 @@ public class PlayerInteract : MonoBehaviour
 
             if (Physics.Raycast(ray, out hit, interactDistance))
             {
-                ;
+                if (hit.collider.CompareTag("Interactable"))
+                {
+                    Destroy(hit.collider.gameObject);
+                }
+                else if (hit.collider.CompareTag("TimeInteract"))
+                {
+                    TimeInteractScript timeInteractScript = hit.collider.GetComponent<TimeInteractScript>();
+                    if (timeInteractScript != null)
+                    {
+                        timeInteractScript.StartCountdown();
+                    }
+                }
             }
         }
     }

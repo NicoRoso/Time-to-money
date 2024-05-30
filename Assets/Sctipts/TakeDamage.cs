@@ -17,7 +17,6 @@ public class TakeDamage : MonoBehaviour
     public void DecreaseHP(int amount)
     {
         hp.currentHp -= amount;
-        Debug.Log(hp.gameObject.name + " потерял " + amount + " HP. Текущее HP: " + hp.currentHp);
 
         onTakedDamage?.Invoke();
     }
