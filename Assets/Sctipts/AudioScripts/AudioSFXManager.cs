@@ -14,11 +14,13 @@ public class AudioSFXManager : MonoBehaviour
     private void OnEnable()
     {
         GunAnimationController.isSounded += PlaySound;
+        Gun.emptyFired += PlaySound;
     }
 
     private void OnDisable()
     {
         GunAnimationController.isSounded -= PlaySound;
+        Gun.emptyFired -= PlaySound;
     }
 
 

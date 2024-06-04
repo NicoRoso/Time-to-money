@@ -33,7 +33,7 @@ public class PoliceShooting : MonoBehaviour
         {
             Vector3 targetDir = target.position - transform.position;
             Quaternion targetRotation = Quaternion.LookRotation(targetDir);
-            targetRotation *= Quaternion.Euler(0f, 30f, 0f);
+            targetRotation *= Quaternion.Euler(0f, 31f, 0f);
             transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
         }
 

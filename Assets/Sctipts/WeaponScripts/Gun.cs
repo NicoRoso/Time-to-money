@@ -60,6 +60,10 @@ public class Gun : MonoBehaviour
 
     public static Action gunFired;
 
+
+    [SerializeField] private AudioClip emptyAmmo;
+    public static Action<AudioClip> emptyFired;
+
     private void Awake()
     {
         cam = Camera.main;
@@ -125,6 +129,11 @@ public class Gun : MonoBehaviour
                     StartCoroutine(BurstFire());
                 }
                 break;
+        }
+
+        if (currentAmmo <= 0)
+        {
+            emptyFired?.Invoke(emptyAmmo);
         }
     }
 
