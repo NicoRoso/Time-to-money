@@ -34428,7 +34428,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weapons: []
-  primaryName: Ak-47
+  primaryName: M4A1
   secondaryName: M1911
   input: {fileID: -944628639613478452, guid: e6679333b2fe3e34b9f9376d942ce441, type: 3}
 --- !u!1 &1771180851

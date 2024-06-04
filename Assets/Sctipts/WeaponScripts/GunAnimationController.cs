@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -13,6 +14,10 @@ public class GunAnimationController : MonoBehaviour
     private string afterShotName = "AfterShot";
     private string aimName = "isAiming";
     private string hideName = "Hide";
+    private string fireName = "Fire";
+
+
+    public static Action<AudioClip> isSounded;
 
     [SerializeField] private GunAim gunAnim;
     void Start()
@@ -21,6 +26,17 @@ public class GunAnimationController : MonoBehaviour
         gunAnim = GetComponent<GunAim>();
         animator = GetComponent<Animator>();
     }
+
+    private void OnEnable()
+    {
+        Gun.gunFired += FireAnim;
+    }
+
+    private void OnDisable()
+    {
+        Gun.gunFired -= FireAnim;
+    }
+
 
     private void Update()
     {
@@ -44,6 +60,11 @@ public class GunAnimationController : MonoBehaviour
         animator.SetTrigger(hideName);
     }
 
+    public void FireAnim()
+    {
+        animator.SetTrigger(fireName);
+    }
+
     public void WalkingAnimation(bool isWalking)
     {
         animator.SetBool(walkingName, isWalking);
@@ -56,5 +77,11 @@ public class GunAnimationController : MonoBehaviour
     public void ShotgunAfterFire()
     {
         animator.SetTrigger(afterShotName);
+    }
+
+
+    public void Sound(AudioClip clip)
+    {
+        isSounded?.Invoke(clip);
     }
 }

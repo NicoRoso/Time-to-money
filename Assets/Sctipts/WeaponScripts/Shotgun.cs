@@ -125,60 +125,63 @@ public class Shotgun : MonoBehaviour
 
     void Shoot()
     {
-        if (gameObject.activeSelf)
+        if (this.gameObject.activeSelf)
         {
-            muzzleFlash.Play();
-            ApplyRecoil();
-        }
-        gunAnimationController.ShotgunAfterFire();
-
-        for (int i = 0; i < pelletsPerShot; i++)
-        {
-            Vector3 direction = cam.transform.forward + Random.insideUnitSphere * 0.1f;
-            RaycastHit hit;
-            if (Physics.Raycast(cam.transform.position, direction, out hit, range))
+            if (gameObject.activeSelf)
             {
-                if (hit.collider != null)
-                {
-                    if (hit.rigidbody != null && !hit.collider.gameObject.CompareTag("Enemy"))
-                    {
-                        hit.rigidbody.AddForce(hit.normal * -impactForce);
-                    }
+                muzzleFlash.Play();
+                ApplyRecoil();
+            }
+            gunAnimationController.ShotgunAfterFire();
 
-                    if (hit.collider.gameObject.GetComponent<TakeDamage>() != null)
+            for (int i = 0; i < pelletsPerShot; i++)
+            {
+                Vector3 direction = cam.transform.forward + Random.insideUnitSphere * 0.1f;
+                RaycastHit hit;
+                if (Physics.Raycast(cam.transform.position, direction, out hit, range))
+                {
+                    if (hit.collider != null)
                     {
-                        hit.collider.gameObject.GetComponent<TakeDamage>().DecreaseHP(damage);
-                        if (BloodEffect != null)
+                        if (hit.rigidbody != null && !hit.collider.gameObject.CompareTag("Enemy"))
+                        {
+                            hit.rigidbody.AddForce(hit.normal * -impactForce);
+                        }
+
+                        if (hit.collider.gameObject.GetComponent<TakeDamage>() != null)
+                        {
+                            hit.collider.gameObject.GetComponent<TakeDamage>().DecreaseHP(damage);
+                            if (BloodEffect != null)
+                            {
+                                if (hit.normal != Vector3.zero)
+                                {
+                                    GameObject impactGo = Instantiate(BloodEffect, hit.point, Quaternion.LookRotation(hit.normal));
+                                    Destroy(impactGo, 2f);
+                                }
+                                else
+                                {
+                                    GameObject impactGo = Instantiate(BloodEffect, hit.point, Quaternion.LookRotation(hit.point - cam.transform.position));
+                                    Destroy(impactGo, 2f);
+                                }
+                            }
+                        }
+                        else if (ImpactEffect != null)
                         {
                             if (hit.normal != Vector3.zero)
                             {
-                                GameObject impactGo = Instantiate(BloodEffect, hit.point, Quaternion.LookRotation(hit.normal));
+                                GameObject impactGo = Instantiate(ImpactEffect, hit.point, Quaternion.LookRotation(hit.normal));
                                 Destroy(impactGo, 2f);
                             }
                             else
                             {
-                                GameObject impactGo = Instantiate(BloodEffect, hit.point, Quaternion.LookRotation(hit.point - cam.transform.position));
+                                GameObject impactGo = Instantiate(ImpactEffect, hit.point, Quaternion.LookRotation(hit.point - cam.transform.position));
                                 Destroy(impactGo, 2f);
                             }
                         }
                     }
-                    else if (ImpactEffect != null)
-                    {
-                        if (hit.normal != Vector3.zero)
-                        {
-                            GameObject impactGo = Instantiate(ImpactEffect, hit.point, Quaternion.LookRotation(hit.normal));
-                            Destroy(impactGo, 2f);
-                        }
-                        else
-                        {
-                            GameObject impactGo = Instantiate(ImpactEffect, hit.point, Quaternion.LookRotation(hit.point - cam.transform.position));
-                            Destroy(impactGo, 2f);
-                        }
-                    }
                 }
             }
+            currentAmmo--;
         }
-        currentAmmo--;
     }
 
     IEnumerator Reload()

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -56,6 +57,8 @@ public class Gun : MonoBehaviour
 
     [Header("Animation")]
     private GunAnimationController animationController;
+
+    public static Action gunFired;
 
     private void Awake()
     {
@@ -206,6 +209,8 @@ public class Gun : MonoBehaviour
             ApplyRecoil();
         }
 
+        gunFired?.Invoke();
+
         RaycastHit hit;
         if (Physics.Raycast(cam.transform.position, cam.transform.forward, out hit, range))
         {
@@ -263,7 +268,7 @@ public class Gun : MonoBehaviour
 
     void ApplyRecoil()
     {
-        Vector3 recoilVector = new Vector3(Random.Range(-recoilForce, recoilForce), Random.Range(-recoilForce, recoilForce), 0f);
+        Vector3 recoilVector = new Vector3(UnityEngine.Random.Range(-recoilForce, recoilForce), UnityEngine.Random.Range(-recoilForce, recoilForce), 0f);
         cam.transform.localPosition += recoilVector;
         StartCoroutine(ResetRecoil());
     }

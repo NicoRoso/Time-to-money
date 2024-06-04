@@ -57,8 +57,13 @@ public class PlayerController : MonoBehaviour
 
     public bool isMoving;
     private Vector3 currentMovement = Vector3.zero;
-    
+
     private float verticalRotation;
+
+    [SerializeField] private AudioClip stepSound;
+    [SerializeField] private AudioClip stepRunSound;
+    public static Action<AudioClip> isWalking;
+    public static Action<AudioClip> isRunning;
 
     private void Awake()
     {
@@ -123,6 +128,18 @@ public class PlayerController : MonoBehaviour
         currentMovement.z = horizontalMovement.z;
 
         characterController.Move(horizontalMovement * Time.deltaTime);
+
+        if (horizontalMovement != Vector3.zero && isGrounded)
+        {
+            if (!isSprinting)
+            {
+                isWalking?.Invoke(stepSound);
+            }
+            else
+            {
+                isRunning?.Invoke(stepRunSound);
+            }
+        }
 
         isMoving = moveVector.y != 0 || moveVector.x != 0;
     }
