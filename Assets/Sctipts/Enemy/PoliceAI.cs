@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -20,6 +21,13 @@ public class PoliceAI : MonoBehaviour
 
     [SerializeField] private Hp hp;
     [SerializeField] private AnimationEnemy enemyAnim;
+
+    [SerializeField] private AudioClip[] _moveLines;
+    [SerializeField] private AudioClip[] _backLines;
+
+    public static Action<AudioClip[]> isOrdered;
+
+    private bool isOrdering = false;
 
     private void Awake()
     {
@@ -66,6 +74,11 @@ public class PoliceAI : MonoBehaviour
                         enemyAnim.Walking(true);
                         agent.isStopped = false;
                     }
+                    if (isOrdering)
+                    {
+                        isOrdered?.Invoke(_backLines);
+                        isOrdering = true;
+                    }
                     break;
                 case State.AssaultPhase:
                     if (target != null)
@@ -81,6 +94,11 @@ public class PoliceAI : MonoBehaviour
                             enemyAnim.Walking(true);
                             agent.isStopped = false;
                             agent.SetDestination(target.position);
+                        }
+                        if (isOrdering)
+                        {
+                            isOrdered?.Invoke(_moveLines);
+                            isOrdering = true;
                         }
                     }
                     break;
@@ -116,7 +134,7 @@ public class PoliceAI : MonoBehaviour
     {
         if (waypoints.Count > 0)
         {
-            int randomIndex = Random.Range(0, waypoints.Count);
+            int randomIndex = UnityEngine.Random.Range(0, waypoints.Count);
             Transform randomWaypoint = waypoints[randomIndex];
             agent.SetDestination(randomWaypoint.position);
             currentState = State.PreparationPhase;
@@ -128,7 +146,7 @@ public class PoliceAI : MonoBehaviour
         GameObject[] gangObjects = GameObject.FindGameObjectsWithTag("Gang");
         if (gangObjects.Length > 0)
         {
-            int randomIndex = Random.Range(0, gangObjects.Length);
+            int randomIndex = UnityEngine.Random.Range(0, gangObjects.Length);
             target = gangObjects[randomIndex].transform;
         }
     }

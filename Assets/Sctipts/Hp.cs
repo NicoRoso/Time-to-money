@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -11,9 +12,16 @@ public class Hp : MonoBehaviour
 
     public event System.Action OnDeath;
 
+    public AudioClip[] _deathLines;
+    public static Action<AudioClip[]> _isDead;
+
     private void Awake()
     {
         currentHp = maxHp;
+        if (_deathLines == null)
+        {
+            return;
+        }
     }
 
     private void Update()
@@ -28,6 +36,8 @@ public class Hp : MonoBehaviour
     {
         isDead = true;
         OnDeath?.Invoke();
+
+        _isDead?.Invoke(_deathLines);
         Destroy(this.gameObject, timeToDestroy);
     }
 }

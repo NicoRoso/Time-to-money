@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -11,6 +12,9 @@ public class AssaultPhase : MonoBehaviour
 
     public PreparingToAssault preparePhase;
 
+    [SerializeField] private AudioClip _clip;
+    public static Action<AudioClip> _assaultMusic;
+
     private void Awake()
     {
         preparePhase = GetComponent<PreparingToAssault>();
@@ -18,6 +22,7 @@ public class AssaultPhase : MonoBehaviour
 
     private void OnEnable()
     {
+        _assaultMusic?.Invoke(_clip);
         countdownTimer = assaultTime + CivilKillChecker.civilKillCount;
     }
 

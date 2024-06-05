@@ -36,6 +36,7 @@ public class AnimationEnemy : MonoBehaviour
     {
         animator.SetInteger(deadIndex, Random.Range(0, 5));
         animator.SetTrigger(dead);
+        this.enabled = false;
     }
 
     public void TakeHit()

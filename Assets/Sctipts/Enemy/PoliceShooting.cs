@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class PoliceShooting : MonoBehaviour
@@ -18,8 +19,17 @@ public class PoliceShooting : MonoBehaviour
 
     private PoliceAI policeAI;
 
+    [SerializeField] private AudioClip[] _enemySpotedLines;
+
+    public static Action<AudioClip[]> _isSpoted;
+
+    private bool isSpoting;
+
+    private float cooldownTimer = 10f;
+
     private void Awake()
     {
+        isSpoting = false;
         policeAI = GetComponent<PoliceAI>();
         hp = GetComponent<Hp>();
         animatorEnemy = GetComponent<AnimationEnemy>();
@@ -45,6 +55,13 @@ public class PoliceShooting : MonoBehaviour
             RaycastHit hit;
             if (Physics.Raycast(raycastOrigin, raycastOriginOffset.forward, out hit, Mathf.Infinity))
             {
+
+                if (!isSpoting)
+                {
+                    _isSpoted?.Invoke(_enemySpotedLines);
+                    isSpoting = true;
+                }
+
                 Debug.DrawRay(raycastOrigin, raycastOriginOffset.forward * hit.distance, Color.red);
 
                 if (hit.collider.transform == target)
