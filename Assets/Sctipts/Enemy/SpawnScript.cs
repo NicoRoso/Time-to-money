@@ -23,8 +23,6 @@ public class SpawnScript : MonoBehaviour
         {
             if (_spawning)
             {
-                Debug.Log($"Current Enemy Count: {enemyCount}");
-
                 if (enemyCount < maxSpawnCount)
                 {
                     Instantiate(_policeUnit, spawnPoint.position, Quaternion.identity);
@@ -41,7 +39,7 @@ public class SpawnScript : MonoBehaviour
 
     private void FixedUpdate()
     {
-        enemyCount = 0;  // Reset count to 0
+        enemyCount = 0;
         GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
 
         foreach (GameObject enemy in enemies)
