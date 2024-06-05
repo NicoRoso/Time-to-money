@@ -6,6 +6,7 @@ public class SwatUnitSound : MonoBehaviour
 {
 
     [SerializeField] private AudioSource _source;
+    [SerializeField] private AudioSource _GunSource;
 
     private void Awake()
     {
@@ -14,21 +15,21 @@ public class SwatUnitSound : MonoBehaviour
 
     private void OnEnable()
     {
-        Hp._isDead += PlayMassiveAudio;
-        PoliceShooting._isSpoted += PlayMassiveAudio;
-        PoliceAI.isOrdered += PlayMassiveAudio;
+        GetComponent<Hp>()._isDead += PlayMassiveAudio;
+        GetComponent<PoliceShooting>()._isSpoted += PlayMassiveAudio;
+        GetComponent<PoliceAI>().isOrdered += PlayMassiveAudio;
     }
 
     private void OnDisable()
     {
-        Hp._isDead -= PlayMassiveAudio;
-        PoliceShooting._isSpoted -= PlayMassiveAudio;
-        PoliceAI.isOrdered -= PlayMassiveAudio;
+        GetComponent<Hp>()._isDead -= PlayMassiveAudio;
+        GetComponent<PoliceShooting>()._isSpoted -= PlayMassiveAudio;
+        GetComponent<PoliceAI>().isOrdered -= PlayMassiveAudio;
     }
 
     public void PlayGunSound(AudioClip clip)
     {
-        _source.PlayOneShot(clip);
+        _GunSource.PlayOneShot(clip);
     }
 
     public void PlayMassiveAudio(AudioClip[] clips)

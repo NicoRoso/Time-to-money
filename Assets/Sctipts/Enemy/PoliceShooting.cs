@@ -21,7 +21,7 @@ public class PoliceShooting : MonoBehaviour
 
     [SerializeField] private AudioClip[] _enemySpotedLines;
 
-    public static Action<AudioClip[]> _isSpoted;
+    public Action<AudioClip[]> _isSpoted;
 
     private bool isSpoting;
 

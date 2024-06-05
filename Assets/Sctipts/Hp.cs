@@ -13,7 +13,7 @@ public class Hp : MonoBehaviour
     public event System.Action OnDeath;
 
     public AudioClip[] _deathLines;
-    public static Action<AudioClip[]> _isDead;
+    public Action<AudioClip[]> _isDead;
 
     private void Awake()
     {

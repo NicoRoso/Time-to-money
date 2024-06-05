@@ -25,7 +25,7 @@ public class PoliceAI : MonoBehaviour
     [SerializeField] private AudioClip[] _moveLines;
     [SerializeField] private AudioClip[] _backLines;
 
-    public static Action<AudioClip[]> isOrdered;
+    public Action<AudioClip[]> isOrdered;
 
     private bool isOrdering = false;
 
