@@ -36,8 +36,8 @@ public class Hp : MonoBehaviour
     {
         isDead = true;
         OnDeath?.Invoke();
-
         _isDead?.Invoke(_deathLines);
         Destroy(this.gameObject, timeToDestroy);
+        this.enabled = false;
     }
 }

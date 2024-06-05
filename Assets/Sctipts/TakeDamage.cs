@@ -36,9 +36,6 @@ public class TakeDamage : MonoBehaviour
 
     public void SetOnTakeDamage(Action callback)
     {
-        if (hp.currentHp > 0)
-        {
-            onTakedDamage = callback;
-        }
+        onTakedDamage = callback;
     }
 }

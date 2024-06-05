@@ -25,8 +25,6 @@ public class PoliceShooting : MonoBehaviour
 
     private bool isSpoting;
 
-    private float cooldownTimer = 10f;
-
     private void Awake()
     {
         isSpoting = false;
