@@ -4,6 +4,8 @@ using UnityEngine.InputSystem;
 public class CivilIntoRobber : MonoBehaviour
 {
     [SerializeField] private GameObject _weaponHands;
+    [SerializeField] private GameObject _events;
+    [SerializeField] private GameObject _spawner;
     [SerializeField] private PlayerToCivilGround _civilAction;
     [SerializeField] private InputActionAsset _playerInput;
     [SerializeField] private float _holdTime = 2.0f;
@@ -53,6 +55,8 @@ public class CivilIntoRobber : MonoBehaviour
                 if (!_weaponHands.activeInHierarchy)
                 {
                     _weaponHands.SetActive(true);
+                    _events.SetActive(true);
+                    _spawner.SetActive(true);
                     _civilAction.enabled = true;
                     this.enabled = false;
                 }
