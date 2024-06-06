@@ -618,7 +618,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentState: 0
   target: {fileID: 0}
-  attackRadius: 5
+  attackRadius: 10
   hp: {fileID: 0}
   enemyAnim: {fileID: 0}
   _moveLines:

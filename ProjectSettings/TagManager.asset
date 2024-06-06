@@ -12,6 +12,7 @@ TagManager:
   - Lock
   - Interactable
   - TimeInteract
+  - Escape
   layers:
   - Default
   - TransparentFX

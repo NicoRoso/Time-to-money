@@ -29,6 +29,8 @@ public class PoliceAI : MonoBehaviour
 
     private bool isOrdering = false;
 
+    [SerializeField] private float radius = 5f;
+
     private void Awake()
     {
         agent = GetComponent<NavMeshAgent>();
@@ -37,7 +39,7 @@ public class PoliceAI : MonoBehaviour
 
         agent.speed = 3f;
 
-        attackRadius = 5f;
+        attackRadius = 10f;
 
         GameObject[] waypointParents = GameObject.FindGameObjectsWithTag("WaypointParent");
         foreach (GameObject parent in waypointParents)
@@ -114,6 +116,22 @@ public class PoliceAI : MonoBehaviour
             enemyAnim.Walking(false);
             agent.enabled = false;
             this.enabled = false;
+        }
+
+        Collider[] colliders = Physics.OverlapSphere(transform.position, radius);
+
+        foreach (Collider col in colliders)
+        {
+            if (col.gameObject.GetComponent<TakeDamage>())
+            {
+                CivilAnimations civilAnim = col.GetComponentInParent<CivilAnimations>();
+
+                if (civilAnim != null)
+                {
+                    civilAnim.HostageAnimation(false);
+                    civilAnim.isHostage = false;
+                }
+            }
         }
     }
 

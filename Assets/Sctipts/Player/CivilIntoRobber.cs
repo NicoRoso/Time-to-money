@@ -7,6 +7,7 @@ public class CivilIntoRobber : MonoBehaviour
     [SerializeField] private GameObject _events;
     [SerializeField] private GameObject _spawner;
     [SerializeField] private PlayerToCivilGround _civilAction;
+    [SerializeField] private PlayerInteract _interactAction;
     [SerializeField] private InputActionAsset _playerInput;
     [SerializeField] private float _holdTime = 2.0f;
 
@@ -18,6 +19,7 @@ public class CivilIntoRobber : MonoBehaviour
     {
         _weaponHands.SetActive(false);
         _civilAction.enabled = false;
+        _interactAction.enabled = false;
         activeRobberAction = _playerInput.FindActionMap("Player").FindAction("Drop");
 
         activeRobberAction.performed += OnHoldActionPerformed;
@@ -56,8 +58,8 @@ public class CivilIntoRobber : MonoBehaviour
                 {
                     _weaponHands.SetActive(true);
                     _events.SetActive(true);
-                    _spawner.SetActive(true);
                     _civilAction.enabled = true;
+                    _interactAction.enabled = true;
                     this.enabled = false;
                 }
             }

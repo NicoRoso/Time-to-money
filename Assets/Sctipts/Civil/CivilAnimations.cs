@@ -9,18 +9,26 @@ public class CivilAnimations : MonoBehaviour
     private string dead = "Death";
     private string deadIndex = "DeathIndex";
     private string hostage = "isHostage";
+    private string run = "isRunning";
+
+    [SerializeField] AudioSource source;
+
+    public bool isHostage;
 
     private void Awake()
     {
         animator = GetComponent<Animator>();
         _hp = GetComponent<Hp>();
+        isHostage = false;
+        source = GetComponent<AudioSource>();
     }
 
     private void Update()
     {
         if (_hp.isDead)
         {
-            HostageAnimation(false);
+            isHostage = false;
+            HostageAnimation(isHostage);
             Death();
         }
     }
@@ -33,6 +41,17 @@ public class CivilAnimations : MonoBehaviour
 
     public void HostageAnimation(bool isHostage)
     {
+        this.isHostage = isHostage;
         animator.SetBool(hostage, isHostage);
+    }
+
+    public void RunAnimation(bool isRunning)
+    {
+        animator.SetBool(run, isRunning);
+    }
+
+    public void Scream(AudioClip clip)
+    {
+        source.PlayOneShot(clip);
     }
 }
