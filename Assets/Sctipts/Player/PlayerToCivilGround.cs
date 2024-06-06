@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -10,6 +11,10 @@ public class PlayerToCivilGround : MonoBehaviour
     private InputAction screamAction;
 
     [SerializeField] private float radius = 10f;
+
+    [SerializeField] private AudioClip[] takeDownVoice;
+
+    public static Action<AudioClip[]> isSaid;
 
     private void Awake()
     {
@@ -30,6 +35,8 @@ public class PlayerToCivilGround : MonoBehaviour
 
     void CheckForCivilCollision()
     {
+        isSaid?.Invoke(takeDownVoice);
+
         Collider[] colliders = Physics.OverlapSphere(transform.position, radius);
 
         foreach (Collider col in colliders)

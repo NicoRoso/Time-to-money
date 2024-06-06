@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,6 +8,10 @@ public class TakePlayerDamage : MonoBehaviour
     public PlayerHp playerHp;
     private float timeSinceLastDamage;
     private const float armorRegenDelay = 3.5f;
+
+    [SerializeField] private AudioClip[] takeDamageVoice;
+
+    public static Action<AudioClip[]> isDamaged;
 
     private void Awake()
     {
@@ -32,6 +37,11 @@ public class TakePlayerDamage : MonoBehaviour
 
     public void DicreaseHp(int damage)
     {
+        if (playerHp.hp <= playerHp.hp / 4)
+        {
+            isDamaged?.Invoke(takeDamageVoice);
+        }
+
         if (playerHp.armor > 0)
         {
             playerHp.armor -= damage/ 2;

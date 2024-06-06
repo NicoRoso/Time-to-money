@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -14,6 +15,10 @@ public class CivilIntoRobber : MonoBehaviour
     private float holdTimer = 0f;
     private bool isHolding = false;
     private InputAction activeRobberAction;
+
+    [SerializeField] private AudioClip[] begginingVoice;
+
+    public static Action<AudioClip[]> isBegun;
 
     void Awake()
     {
@@ -56,6 +61,7 @@ public class CivilIntoRobber : MonoBehaviour
             {
                 if (!_weaponHands.activeInHierarchy)
                 {
+                    isBegun?.Invoke(begginingVoice);
                     _weaponHands.SetActive(true);
                     _events.SetActive(true);
                     _civilAction.enabled = true;

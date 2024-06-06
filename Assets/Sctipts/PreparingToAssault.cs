@@ -15,7 +15,9 @@ public class PreparingToAssault : MonoBehaviour
 
     [SerializeField] private AudioClip controlClip;
     [SerializeField] private AudioClip anticipationClip;
+    [SerializeField] private AudioClip[] anticipationVoiceLines;
     public static Action<AudioClip> preparedMusic;
+    public static Action<AudioClip[]> _anticipated;
 
     private void Awake()
     {
@@ -47,7 +49,6 @@ public class PreparingToAssault : MonoBehaviour
 
         if (countdownTimer <= 0)
         {
-            Debug.Log("Begin Assault!");
             this.enabled = false;
         }
 
@@ -55,7 +56,7 @@ public class PreparingToAssault : MonoBehaviour
         {
             anticipating = true;
             preparedMusic?.Invoke(anticipationClip);
-            Debug.Log("Anticipation");
+            _anticipated?.Invoke(anticipationVoiceLines);
         }
     }
 }

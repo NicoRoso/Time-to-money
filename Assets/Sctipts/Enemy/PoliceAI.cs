@@ -116,7 +116,6 @@ public class PoliceAI : MonoBehaviour
         else
         {
             enemyAnim.Walking(false);
-            agent.enabled = false;
             this.enabled = false;
         }
 

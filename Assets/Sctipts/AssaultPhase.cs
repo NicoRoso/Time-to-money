@@ -39,7 +39,6 @@ public class AssaultPhase : MonoBehaviour
 
             if (countdownTimer <= 0)
             {
-                Debug.Log("Preparation Phase Now!");
                 this.enabled = false;
             }
         }
