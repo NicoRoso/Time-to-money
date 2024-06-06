@@ -35,6 +35,7 @@ public class CivilAI : MonoBehaviour
             {
                 civilAnim.RunAnimation(true);
                 agent.isStopped = false;
+                agent.speed = 10f;
             }
             else
             {

@@ -15,12 +15,16 @@ public class AudioSFXManager : MonoBehaviour
     {
         GunAnimationController.isSounded += PlaySound;
         Gun.emptyFired += PlaySound;
+        Card_Interactor.isPicked += PlaySound;
+        TimeInteractScript.isStartOpenSound += PlaySound;
     }
 
     private void OnDisable()
     {
         GunAnimationController.isSounded -= PlaySound;
         Gun.emptyFired -= PlaySound;
+        Card_Interactor.isPicked -= PlaySound;
+        TimeInteractScript.isStartOpenSound -= PlaySound;
     }
 
 

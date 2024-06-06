@@ -689,6 +689,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 8d2a5712a3eddc14f9fda86e3ea5718d, type: 3}
   - {fileID: 8300000, guid: 6640767a4fd7839409a152f1d8721063, type: 3}
   - {fileID: 8300000, guid: 4f578137b6339dc459a03e3af33dd4b3, type: 3}
+  radius: 8
 --- !u!114 &8351624458523143376
 MonoBehaviour:
   m_ObjectHideFlags: 0

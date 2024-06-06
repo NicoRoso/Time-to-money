@@ -29,13 +29,15 @@ public class PoliceAI : MonoBehaviour
 
     private bool isOrdering = false;
 
-    [SerializeField] private float radius = 5f;
+    [SerializeField] private float radius;
 
     private void Awake()
     {
         agent = GetComponent<NavMeshAgent>();
         hp = agent.GetComponent<Hp>();
         enemyAnim = GetComponent<AnimationEnemy>();
+
+        radius = UnityEngine.Random.Range(5, 15);
 
         agent.speed = 3f;
 

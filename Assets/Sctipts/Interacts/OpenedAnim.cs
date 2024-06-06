@@ -6,9 +6,12 @@ public class OpenedAnim : MonoBehaviour
 {
     [SerializeField] Animator animator;
 
+    [SerializeField] private AudioSource _source;
+
     private void Awake()
     {
         animator = GetComponent<Animator>();
+        _source = GetComponent<AudioSource>();
     }
 
     private void OnEnable()
@@ -24,5 +27,10 @@ public class OpenedAnim : MonoBehaviour
     public void Open()
     {
         animator.SetTrigger("Open");
+    }
+
+    public void PlaySound(AudioClip clip)
+    {
+        _source.PlayOneShot(clip);
     }
 }
