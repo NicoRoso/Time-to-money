@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1158538148965086837}
   - component: {fileID: 8275180971576119676}
   - component: {fileID: 8783139048540427770}
-  - component: {fileID: 3552202419238962211}
+  - component: {fileID: 7204853104170972631}
   m_Layer: 0
   m_Name: First_Kit
   m_TagString: First Kit
@@ -28,13 +28,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6278861659914716572}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071067}
+  m_LocalRotation: {x: -0.7069834, y: 0, z: 0, w: 0.7072302}
   m_LocalPosition: {x: 9.63, y: 0.424, z: -34.64}
   m_LocalScale: {x: 100, y: 100, z: 100}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -89.98, y: 0, z: 0}
 --- !u!33 &1158538148965086837
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -98,8 +98,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: {fileID: 0}
-  amount: 0
---- !u!65 &3552202419238962211
+  amount: 200
+--- !u!65 &7204853104170972631
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -118,5 +118,5 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.002057217, y: 0.007993103, z: 0.005276069}
+  m_Size: {x: 0.0012343302, y: 0.0047958624, z: 0.0031656418}
   m_Center: {x: -5.820766e-11, y: 0, z: 0}
