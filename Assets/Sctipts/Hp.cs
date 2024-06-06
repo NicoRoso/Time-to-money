@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class Hp : MonoBehaviour
 {
@@ -34,6 +35,7 @@ public class Hp : MonoBehaviour
 
     private void Die()
     {
+        GetComponent<NavMeshAgent>().speed = 0;
         isDead = true;
         OnDeath?.Invoke();
         _isDead?.Invoke(_deathLines);

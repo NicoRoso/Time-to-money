@@ -19,7 +19,7 @@ public class PoliceAI : MonoBehaviour
     private List<Transform> waypoints = new List<Transform>();
     private NavMeshAgent agent;
 
-    [SerializeField] private Hp hp;
+    [SerializeField] private PoliceHP hp;
     [SerializeField] private AnimationEnemy enemyAnim;
 
     [SerializeField] private AudioClip[] _moveLines;
@@ -34,7 +34,7 @@ public class PoliceAI : MonoBehaviour
     private void Awake()
     {
         agent = GetComponent<NavMeshAgent>();
-        hp = agent.GetComponent<Hp>();
+        hp = agent.GetComponent<PoliceHP>();
         enemyAnim = GetComponent<AnimationEnemy>();
 
         radius = UnityEngine.Random.Range(5, 15);

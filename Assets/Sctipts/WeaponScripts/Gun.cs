@@ -22,7 +22,8 @@ public class Gun : MonoBehaviour
     [SerializeField] private float recoilResetSpeed = 2f;
 
     [Header("Ammo")]
-    [SerializeField] private int maxAmmo = 30;
+    [SerializeField] private int maxAmmo;
+    [SerializeField] private int allAmmo;
     private int currentAmmo;
     [SerializeField] private float reloadTime = 1.5f;
     public bool isReloading = false;
@@ -60,7 +61,6 @@ public class Gun : MonoBehaviour
 
     public static Action gunFired;
 
-
     [SerializeField] private AudioClip emptyAmmo;
     public static Action<AudioClip> emptyFired;
 
@@ -68,6 +68,7 @@ public class Gun : MonoBehaviour
     {
         cam = Camera.main;
         currentAmmo = maxAmmo;
+        allAmmo = maxAmmo * 3;
 
         gunAim = GetComponent<GunAim>();
         animationController = GetComponent<GunAnimationController>();
@@ -78,9 +79,7 @@ public class Gun : MonoBehaviour
         aimMode = inputPlayer.FindActionMap("Player").FindAction("Aim");
 
         fireAction.performed += OnFirePerformed;
-
         reloadAction.performed += OnReloadPerformed;
-
         changeFireMode.performed += OnChangeFireModePerformed;
 
         aimMode.performed += context => OnAiming(true);
@@ -102,6 +101,7 @@ public class Gun : MonoBehaviour
         changeFireMode.Disable();
         aimMode.Disable();
     }
+
     private void OnFirePerformed(InputAction.CallbackContext context)
     {
         if (!gameObject.activeSelf || isReloading)
@@ -156,7 +156,7 @@ public class Gun : MonoBehaviour
         if (!gameObject.activeSelf || isReloading)
             return;
 
-        if (currentAmmo < maxAmmo)
+        if (currentAmmo < maxAmmo && allAmmo > 0)
         {
             StartCoroutine(Reload());
         }
@@ -168,11 +168,11 @@ public class Gun : MonoBehaviour
         {
             case FireMode.SemiAuto:
                 if (!isPistol)
-                fireMode = FireMode.FullAuto;
+                    fireMode = FireMode.FullAuto;
                 break;
             case FireMode.FullAuto:
                 if (!isPistol)
-                fireMode = FireMode.Burst;
+                    fireMode = FireMode.Burst;
                 break;
             case FireMode.Burst:
                 fireMode = FireMode.SemiAuto;
@@ -247,6 +247,23 @@ public class Gun : MonoBehaviour
                         }
                     }
                 }
+                else if (hit.collider.gameObject.GetComponent<TakeDamageCivil>() != null)
+                {
+                    hit.collider.gameObject.GetComponent<TakeDamageCivil>().DecreaseCivilHP(damage);
+                    if (BloodEffect != null)
+                    {
+                        if (hit.normal != Vector3.zero)
+                        {
+                            GameObject impactGo = Instantiate(BloodEffect, hit.point, Quaternion.LookRotation(hit.normal));
+                            Destroy(impactGo, 2f);
+                        }
+                        else
+                        {
+                            GameObject impactGo = Instantiate(BloodEffect, hit.point, Quaternion.LookRotation(hit.point - cam.transform.position));
+                            Destroy(impactGo, 2f);
+                        }
+                    }
+                }
                 else if (ImpactEffect != null)
                 {
                     if (hit.normal != Vector3.zero)
@@ -270,8 +287,14 @@ public class Gun : MonoBehaviour
         isReloading = true;
         gunAim.isAiming = false;
         animationController.ReloadingAnimation();
+
+        int ammoToReload = maxAmmo - currentAmmo;
+        int ammoAvailable = Mathf.Min(ammoToReload, allAmmo);
+
         yield return new WaitForSeconds(reloadTime);
-        currentAmmo = maxAmmo;
+        currentAmmo += ammoAvailable;
+        allAmmo -= ammoAvailable;
+
         isReloading = false;
     }
 
@@ -289,5 +312,11 @@ public class Gun : MonoBehaviour
             cam.transform.localPosition = Vector3.Lerp(cam.transform.localPosition, Vector3.zero, recoilResetSpeed * Time.deltaTime);
             yield return null;
         }
+    }
+
+    public void PlusAmmo(int amount)
+    {
+        allAmmo += amount;
+        allAmmo = Mathf.Min(allAmmo, maxAmmo * 3);
     }
 }

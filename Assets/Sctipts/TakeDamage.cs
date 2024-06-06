@@ -11,21 +11,24 @@ public class TakeDamage : MonoBehaviour
 
     [SerializeField] private AudioSource source;
 
-    [SerializeField] private Hp hp;
+    [SerializeField] private PoliceHP hp;
 
     private void Awake()
     {
-        hp = GetComponentInParent<Hp>();
+        hp = GetComponentInParent<PoliceHP>();
         source = GetComponentInParent<AudioSource>();
     }
 
     public void DecreaseHP(int amount)
     {
-        if (hp.currentHp > 0)
+        if (hp != null && hp.currentHp > 0)
         {
             hp.currentHp -= amount;
-            AudioClip tmpClip = takeHitLines[UnityEngine.Random.Range(0, takeHitLines.Length)];
-            source.PlayOneShot(tmpClip);
+            if (takeHitLines != null && takeHitLines.Length > 0)
+            {
+                AudioClip tmpClip = takeHitLines[UnityEngine.Random.Range(0, takeHitLines.Length)];
+                source.PlayOneShot(tmpClip);
+            }
             onTakedDamage?.Invoke();
         }
         else

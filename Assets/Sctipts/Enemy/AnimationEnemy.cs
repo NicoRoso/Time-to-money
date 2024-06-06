@@ -5,7 +5,7 @@ using UnityEngine;
 public class AnimationEnemy : MonoBehaviour
 {
     [SerializeField] Animator animator;
-    [SerializeField] Hp _hp;
+    [SerializeField] PoliceHP _hp;
     private string dead = "Death";
     private string deadIndex = "DeathIndex";
     private string hit = "GetHit";
@@ -15,7 +15,7 @@ public class AnimationEnemy : MonoBehaviour
     void Awake()
     {
         animator = GetComponent<Animator>();
-        _hp = GetComponent<Hp>();
+        _hp = GetComponent<PoliceHP>();
 
         TakeDamage takeDamage = GetComponentInChildren<TakeDamage>();
         if (takeDamage != null && !_hp.isDead)

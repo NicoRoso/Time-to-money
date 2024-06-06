@@ -29,4 +29,9 @@ public class PlayerHp : MonoBehaviour
             armor = 0;
         }
     }
+
+    public void TakeHill(int amount)
+    {
+        hp += amount;
+    }
 }

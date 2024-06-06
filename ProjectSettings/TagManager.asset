@@ -13,6 +13,9 @@ TagManager:
   - Interactable
   - TimeInteract
   - Escape
+  - First Kit
+  - AmmoBox
+  - Weapon
   layers:
   - Default
   - TransparentFX

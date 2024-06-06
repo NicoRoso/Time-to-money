@@ -13,6 +13,8 @@ public class CivilAI : MonoBehaviour
 
     CivilIntoRobber player;
 
+    Hp hp;
+
     private void Start()
     {
         escapePoint = GameObject.FindGameObjectWithTag("Escape").transform;
@@ -22,6 +24,8 @@ public class CivilAI : MonoBehaviour
         civilAnim = GetComponent<CivilAnimations>();
 
         player = FindObjectOfType<CivilIntoRobber>();
+
+        hp = GetComponent<Hp>();
 
         agent.SetDestination(escapePoint.position);
         agent.isStopped = true;
@@ -46,6 +50,12 @@ public class CivilAI : MonoBehaviour
         else
         {
             civilAnim.RunAnimation(false);
+            agent.isStopped = true;
+        }
+
+        if (hp.currentHp <=0)
+        {
+            agent.speed = 0;
             agent.isStopped = true;
         }
     }

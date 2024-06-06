@@ -44,7 +44,7 @@ public class SpawnScript : MonoBehaviour
 
         foreach (GameObject enemy in enemies)
         {
-            Hp hp = enemy.GetComponent<Hp>();
+            PoliceHP hp = enemy.GetComponent<PoliceHP>();
             if (hp != null && hp.enabled)
             {
                 enemyCount++;

@@ -513,7 +513,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7895669207219499039}
-  - component: {fileID: 2864195274387195292}
+  - component: {fileID: 2728867748776665447}
   - component: {fileID: 4341189116958789904}
   - component: {fileID: 660047672209743360}
   - component: {fileID: 1773765266718485070}
@@ -546,7 +546,7 @@ Transform:
   - {fileID: 2806898291144721506}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
---- !u!114 &2864195274387195292
+--- !u!114 &2728867748776665447
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -555,7 +555,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1186108596835627471}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a69c3e88a364ecb4784ae769b2916797, type: 3}
+  m_Script: {fileID: 11500000, guid: bc7a4b4cf105b3b489d38cc211da97ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   maxHp: 200
@@ -569,6 +569,10 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 29e201bfa9be9db44bdb945c2dc9aec0, type: 3}
   - {fileID: 8300000, guid: 7e3958741627d5643b5a8ac802fe204c, type: 3}
   - {fileID: 8300000, guid: 290b248e130d69e48a05311848ede078, type: 3}
+  firstKit: {fileID: 6278861659914716572, guid: c476ee656b9f28a428287f338cdc1067,
+    type: 3}
+  ammoBox: {fileID: 7045491675557514589, guid: d084bf19a04ce9f4b949633491f1b5b0, type: 3}
+  dropChance: 0.5
 --- !u!114 &4341189116958789904
 MonoBehaviour:
   m_ObjectHideFlags: 0

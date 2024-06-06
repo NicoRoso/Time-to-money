@@ -15,14 +15,14 @@ public class SwatUnitSound : MonoBehaviour
 
     private void OnEnable()
     {
-        GetComponent<Hp>()._isDead += PlayMassiveAudio;
+        GetComponent<PoliceHP>()._isDead += PlayMassiveAudio;
         GetComponent<PoliceShooting>()._isSpoted += PlayMassiveAudio;
         GetComponent<PoliceAI>().isOrdered += PlayMassiveAudio;
     }
 
     private void OnDisable()
     {
-        GetComponent<Hp>()._isDead -= PlayMassiveAudio;
+        GetComponent<PoliceHP>()._isDead -= PlayMassiveAudio;
         GetComponent<PoliceShooting>()._isSpoted -= PlayMassiveAudio;
         GetComponent<PoliceAI>().isOrdered -= PlayMassiveAudio;
     }

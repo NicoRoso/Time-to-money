@@ -14,7 +14,7 @@ public class PoliceShooting : MonoBehaviour
 
     public ParticleSystem muzzleFlash;
 
-    [SerializeField] private Hp hp;
+    [SerializeField] private PoliceHP hp;
     [SerializeField] private AnimationEnemy animatorEnemy;
 
     private PoliceAI policeAI;
@@ -29,7 +29,7 @@ public class PoliceShooting : MonoBehaviour
     {
         isSpoting = false;
         policeAI = GetComponent<PoliceAI>();
-        hp = GetComponent<Hp>();
+        hp = GetComponent<PoliceHP>();
         animatorEnemy = GetComponent<AnimationEnemy>();
     }
 
