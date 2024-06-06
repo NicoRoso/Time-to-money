@@ -3,7 +3,32 @@ guid: 01405452f42ce7a42a94cbd5b066c3c1
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Balon
+    second: {fileID: 2100000, guid: 051099bdbb897a64d807e1dceb2b9ac4, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Bracing
+    second: {fileID: 2100000, guid: 4fd0344e01bc27648822d0c98b132365, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Hand
+    second: {fileID: 2100000, guid: 262867be31ca05f4abff180230063bf2, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: The bell
+    second: {fileID: 2100000, guid: 9e45c7d395476534abdff8fdf14a27a9, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Tube
+    second: {fileID: 2100000, guid: eef4ed2ccf5db9047b48a888c02ae6ca, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
@@ -90,7 +115,7 @@ ModelImporter:
     armStretch: 0.05
     legStretch: 0.05
     feetSpacing: 0
-    globalScale: 0.003
+    globalScale: 0.3
     rootMotionBoneName: 
     hasTranslationDoF: 0
     hasExtraRoot: 0

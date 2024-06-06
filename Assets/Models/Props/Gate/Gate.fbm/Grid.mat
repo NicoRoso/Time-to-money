@@ -282,7 +282,7 @@ Material:
     - _UseEmissiveIntensity: 0
     - _UseEmissiveMap: 0
     - _UseMetallicMap: 0
-    - _UseNormalMap: 1
+    - _UseNormalMap: 0
     - _UseOpacityMap: 1
     - _UseRoughnessMap: 0
     - _UseShadowThreshold: 0
