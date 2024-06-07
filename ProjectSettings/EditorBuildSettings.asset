@@ -11,4 +11,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Robenson Bank/Robenson Bank.unity
     guid: 1d8beed120eb6274d9b5f85fca0c129b
+  - enabled: 1
+    path: Assets/Scenes/EndScreens/Loose Scene.unity
+    guid: c74cade753fdf8748b3dc1b0cfab993b
+  - enabled: 1
+    path: Assets/Scenes/EndScreens/Win Scene.unity
+    guid: 4e835a7480a5c8e44aa743ebee64dfe7
   m_configObjects: {}

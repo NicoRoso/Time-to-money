@@ -9,7 +9,7 @@ public class PoliceShooting : MonoBehaviour
 
     [SerializeField] private int damage = 5;
 
-    private float fireRate = 5f;
+    private float fireRate = 7f;
     private float nextFireTime = 0f;
 
     public ParticleSystem muzzleFlash;
@@ -82,7 +82,7 @@ public class PoliceShooting : MonoBehaviour
 
         if (target.gameObject.GetComponent<TakePlayerDamage>() != null)
         {
-            target.gameObject.GetComponent<TakePlayerDamage>().DicreaseHp(damage);
+            target.gameObject.GetComponent<TakePlayerDamage>().DecreaseHp(damage);
         }
 
         animatorEnemy.Fire();

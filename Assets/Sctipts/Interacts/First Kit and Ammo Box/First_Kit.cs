@@ -23,6 +23,6 @@ public class First_Kit : MonoBehaviour
 
     private void OnDestroy()
     {
-        hp.TakeHill(amount);
+        hp.Heal(amount);
     }
 }

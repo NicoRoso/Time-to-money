@@ -6,12 +6,11 @@ using UnityEngine.InputSystem;
 public class PlayerInteract : MonoBehaviour
 {
     public float interactDistance = 3f;
-
     public InputActionAsset playerInput;
 
     InputAction interact;
-
     bool isInteract;
+    bool interactProcessed;
 
     private void Awake()
     {
@@ -33,10 +32,11 @@ public class PlayerInteract : MonoBehaviour
 
     void Update()
     {
-        if (isInteract)
+        if (isInteract && !interactProcessed)
         {
-            Ray ray = Camera.main.ScreenPointToRay(new Vector3(Screen.width / 2, Screen.height / 2, 0));
+            interactProcessed = true;
 
+            Ray ray = Camera.main.ScreenPointToRay(new Vector3(Screen.width / 2, Screen.height / 2, 0));
             RaycastHit hit;
 
             if (Physics.Raycast(ray, out hit, interactDistance))
@@ -54,6 +54,11 @@ public class PlayerInteract : MonoBehaviour
                     }
                 }
             }
+        }
+
+        if (!isInteract)
+        {
+            interactProcessed = false;
         }
     }
 }

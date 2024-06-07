@@ -23,8 +23,8 @@ public class Gun : MonoBehaviour
 
     [Header("Ammo")]
     [SerializeField] private int maxAmmo;
-    [SerializeField] private int allAmmo;
-    private int currentAmmo;
+    [SerializeField] public int allAmmo;
+    [SerializeField] public int currentAmmo;
     [SerializeField] private float reloadTime = 1.5f;
     public bool isReloading = false;
 
