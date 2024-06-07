@@ -17,6 +17,7 @@ public class AudioSFXManager : MonoBehaviour
         Gun.emptyFired += PlaySound;
         Card_Interactor.isPicked += PlaySound;
         TimeInteractScript.isStartOpenSound += PlaySound;
+        Menu.isButtonPressed += PlaySound;
     }
 
     private void OnDisable()
@@ -25,6 +26,7 @@ public class AudioSFXManager : MonoBehaviour
         Gun.emptyFired -= PlaySound;
         Card_Interactor.isPicked -= PlaySound;
         TimeInteractScript.isStartOpenSound -= PlaySound;
+        Menu.isButtonPressed += PlaySound;
     }
 
 

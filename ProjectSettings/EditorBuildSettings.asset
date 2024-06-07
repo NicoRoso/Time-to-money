@@ -6,6 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/SampleScene.unity
-    guid: 99c9720ab356a0642a771bea13969a05
+    path: Assets/Scenes/MainMenu/Main Menu.unity
+    guid: 2ec5a8373d0146b4e85638e4d6187dee
+  - enabled: 1
+    path: Assets/Scenes/Robenson Bank/Robenson Bank.unity
+    guid: 1d8beed120eb6274d9b5f85fca0c129b
   m_configObjects: {}

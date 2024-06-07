@@ -307,7 +307,7 @@ MonoBehaviour:
   _policeUnit: {fileID: 1186108596835627471, guid: b0f5c3ea02814d2479103fe53848460f,
     type: 3}
   _spawnDelay: 10
-  maxSpawnCount: 10
+  maxSpawnCount: 6
   spawnPoint: {fileID: 5066689742486970456}
 --- !u!33 &4026027578136145798
 MeshFilter:
@@ -394,7 +394,8 @@ AudioSource:
   m_GameObject: {fileID: 4907115805153741930}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 2055403614287624926, guid: 999944487933f0c47bb7fdb7df007bbf,
+    type: 2}
   m_audioClip: {fileID: 8300000, guid: 31f67b6e7e4942d44877b37b143571e3, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1

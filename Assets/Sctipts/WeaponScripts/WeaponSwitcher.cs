@@ -8,8 +8,8 @@ public class WeaponSwitcher : MonoBehaviour
     public GameObject[] weapons;
     private int currentWeaponIndex = 0;
 
-    public string primaryName;
-    public string secondaryName;
+    public static string primaryName;
+    public string secondaryName = "M1911";
 
     [SerializeField] private InputActionAsset input;
 
@@ -17,6 +17,8 @@ public class WeaponSwitcher : MonoBehaviour
 
     void Awake()
     {
+        primaryName = Equipment.weapon;
+
         FindWeapons();
         SwitchWeapon(currentWeaponIndex);
 

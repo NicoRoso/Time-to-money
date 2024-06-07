@@ -37,7 +37,11 @@ public class TakePlayerDamage : MonoBehaviour
 
     public void DicreaseHp(int damage)
     {
-        if (playerHp.hp <= playerHp.hp / 4)
+        if (playerHp.hp <= playerHp.hp / 2)
+        {
+            ;
+        }
+        else if (playerHp.hp <= playerHp.hp / 3)
         {
             isDamaged?.Invoke(takeDamageVoice);
         }
