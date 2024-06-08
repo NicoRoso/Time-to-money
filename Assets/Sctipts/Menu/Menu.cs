@@ -22,6 +22,7 @@ public class Menu : MonoBehaviour
 
     public void StartNewGame()
     {
+        SetValue.AmountValue = 0;
         equipment.SetActive(true);
         menu.SetActive(false);
         isButtonPressed?.Invoke(pressButton);
@@ -44,7 +45,6 @@ public class Menu : MonoBehaviour
 
     public void ExitGame()
     {
-        isButtonPressed?.Invoke(pressButton);
         Application.Quit();
     }
 }

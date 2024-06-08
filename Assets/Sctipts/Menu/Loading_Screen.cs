@@ -12,6 +12,7 @@ public class Loading_Screen : MonoBehaviour
 
     public void Loading(int index)
     {
+        Time.timeScale = 1;
         LoadingScene.SetActive(true);
         StartCoroutine(LoadAsync(index));
     }

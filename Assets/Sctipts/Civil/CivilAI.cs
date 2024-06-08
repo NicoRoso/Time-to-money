@@ -1,7 +1,6 @@
 using UnityEngine;
 using Unity.AI;
 using UnityEngine.AI;
-using UnityEngine.InputSystem.Android;
 
 public class CivilAI : MonoBehaviour
 {
