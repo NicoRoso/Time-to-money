@@ -16,7 +16,10 @@ public class SetValue : MonoBehaviour
 
     private void OnDestroy()
     {
-        endMission.SetActive(true);
+        if (endMission != null)
+        {
+            endMission.SetActive(true);
+        }
 
         AmountValue += Value;
         isDestroyd?.Invoke(Value);

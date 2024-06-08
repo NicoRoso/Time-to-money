@@ -15,7 +15,7 @@ public class Gun : MonoBehaviour
 
     [Header("Effects")]
     public GameObject ImpactEffect;
-    public GameObject BloodEffect;
+    public GameObject[] BloodEffects;
 
     [Header("Recoil")]
     [SerializeField] private float recoilForce = 0.5f;
@@ -233,16 +233,16 @@ public class Gun : MonoBehaviour
                 if (hit.collider.gameObject.GetComponent<TakeDamage>() != null)
                 {
                     hit.collider.gameObject.GetComponent<TakeDamage>().DecreaseHP(damage);
-                    if (BloodEffect != null)
+                    if (BloodEffects != null)
                     {
                         if (hit.normal != Vector3.zero)
                         {
-                            GameObject impactGo = Instantiate(BloodEffect, hit.point, Quaternion.LookRotation(hit.normal));
+                            GameObject impactGo = Instantiate(BloodEffects[UnityEngine.Random.Range(0, BloodEffects.Length)], hit.point, Quaternion.LookRotation(hit.normal));
                             Destroy(impactGo, 2f);
                         }
                         else
                         {
-                            GameObject impactGo = Instantiate(BloodEffect, hit.point, Quaternion.LookRotation(hit.point - cam.transform.position));
+                            GameObject impactGo = Instantiate(BloodEffects[UnityEngine.Random.Range(0, BloodEffects.Length)], hit.point, Quaternion.LookRotation(hit.point - cam.transform.position));
                             Destroy(impactGo, 2f);
                         }
                     }
@@ -250,16 +250,16 @@ public class Gun : MonoBehaviour
                 else if (hit.collider.gameObject.GetComponent<TakeDamageCivil>() != null)
                 {
                     hit.collider.gameObject.GetComponent<TakeDamageCivil>().DecreaseCivilHP(damage);
-                    if (BloodEffect != null)
+                    if (BloodEffects != null)
                     {
                         if (hit.normal != Vector3.zero)
                         {
-                            GameObject impactGo = Instantiate(BloodEffect, hit.point, Quaternion.LookRotation(hit.normal));
+                            GameObject impactGo = Instantiate(BloodEffects[UnityEngine.Random.Range(0, BloodEffects.Length)], hit.point, Quaternion.LookRotation(hit.normal));
                             Destroy(impactGo, 2f);
                         }
                         else
                         {
-                            GameObject impactGo = Instantiate(BloodEffect, hit.point, Quaternion.LookRotation(hit.point - cam.transform.position));
+                            GameObject impactGo = Instantiate(BloodEffects[UnityEngine.Random.Range(0, BloodEffects.Length)], hit.point, Quaternion.LookRotation(hit.point - cam.transform.position));
                             Destroy(impactGo, 2f);
                         }
                     }
